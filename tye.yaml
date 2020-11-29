@@ -1,0 +1,22 @@
+# tye application configuration file
+# read all about it at https://github.com/dotnet/tye
+#
+# when you've given us a try, we'd love to know what you think:
+#    https://aka.ms/AA7q20u
+#
+name: masstransit-rabbitmq
+services:
+- name: publisher-api
+  project: src/publisher-api/publisher-api.csproj
+- name: consumer-app
+  project: src/Consumer.App/Consumer.App.csproj
+- name: rabbit
+  image: rabbitmq:3-management
+  bindings:
+    - port: 5672
+      name: rabbit
+      protocol: amqp
+    - port: 15672
+      name: rabbit-mgt
+      containerPort: 15672
+      protocol: http
