@@ -31,6 +31,7 @@ namespace Consumer.App
                         });
 
                         configurator.AddConsumer<OrderProcessedConsumer>();
+                        configurator.AddActivitiesFromNamespaceContaining<AllocatorActivity>();
                     });
 
                     services.AddHostedService<MassTransitHostedService>();

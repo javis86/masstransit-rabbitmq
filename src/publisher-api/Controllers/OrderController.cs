@@ -29,7 +29,7 @@ namespace publisher_api.Controllers
             {
                 OrderId = orderId,
                 Date = DateTime.Now
-            });       
+            });
             return Ok(respuesta);
         }
     }
