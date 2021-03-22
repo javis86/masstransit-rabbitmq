@@ -18,8 +18,8 @@ namespace Consumer.App.Components
         public async Task Consume(ConsumeContext<IProcessOrder> context)
         {
             var builder = new RoutingSlipBuilder(NewId.NextGuid());
-            builder.AddActivity("AllocatorActivity", new Uri("rabbitmq://localhost/Allocator_execute"), new {OrderId = context.Message.OrderId});
-            builder.AddActivity("PaymentClientValidationActivity", new Uri("rabbitmq://localhost/PaymentClientValidationActiviy_execute"), new {OrderId = context.Message.OrderId});
+            builder.AddActivity("Allocator", new Uri("rabbitmq://localhost/Allocator_execute"), new {OrderId = context.Message.OrderId});
+            builder.AddActivity("PaymentClientValidation", new Uri("rabbitmq://localhost/PaymentClientValidation_execute"), new {OrderId = context.Message.OrderId});
             
             var routingSlip = builder.Build();
             await _bus.Execute(routingSlip);

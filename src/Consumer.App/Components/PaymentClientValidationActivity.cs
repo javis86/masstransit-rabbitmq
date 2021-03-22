@@ -1,15 +1,16 @@
+using System;
 using System.Threading.Tasks;
 using MassTransit.Courier;
 
 namespace Consumer.App.Components
 {
-    public class PaymentClientValidationActiviy : IActivity<ValidationMessage, ValidationLog>
+    public class PaymentClientValidationActivity : IActivity<ValidationMessage, ValidationLog>
     {
         public async Task<ExecutionResult> Execute(ExecuteContext<ValidationMessage> context)
         {
             await Task.Delay(200);
 
-            return context.Arguments.OrderId < 100 ? context.Faulted() : context.Completed();
+            return context.Arguments.OrderId < 100 ? throw new Exception() : context.Completed();
         }
 
         public async Task<CompensationResult> Compensate(CompensateContext<ValidationLog> context)

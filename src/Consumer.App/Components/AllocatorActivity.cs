@@ -8,7 +8,7 @@ namespace Consumer.App.Components
         public async Task<ExecutionResult> Execute(ExecuteContext<AllocatorMessage> context)
         {
             await Task.Delay(200);
-            return context.Completed();
+            return context.Completed(new {OrderId = context.Arguments.OrderId});
         }
 
         public async Task<CompensationResult> Compensate(CompensateContext<AllocatorLog> context)
@@ -22,7 +22,7 @@ namespace Consumer.App.Components
     {
         int OrderId { get; }
     }
-    
+
     public interface AllocatorLog
     {
         int OrderId { get; }
