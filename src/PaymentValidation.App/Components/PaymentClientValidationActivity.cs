@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using MassTransit.Courier;
 
-namespace Consumer.App.Components
+namespace PaymentValidation.App.Components
 {
     public class PaymentClientValidationActivity : IActivity<ValidationMessage, ValidationLog>
     {

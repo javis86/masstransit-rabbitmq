@@ -10,6 +10,8 @@ services:
   project: src/publisher-api/publisher-api.csproj
 - name: consumer-app
   project: src/Consumer.App/Consumer.App.csproj
+- name: paymentvalidation-app
+  project: src/PaymentValidation.App/PaymentValidation.App.csproj
 - name: rabbit
   image: rabbitmq:3-management
   bindings:
